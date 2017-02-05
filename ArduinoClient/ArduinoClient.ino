@@ -5,6 +5,7 @@
  Editor:	http://www.visualmicro.com
 */
 
+#include <ArduinoJson.h>
 #include "ArduinoClientLib.h"
 
 // the setup function runs once when you press reset or power the board

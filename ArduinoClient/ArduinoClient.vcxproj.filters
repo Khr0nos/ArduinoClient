@@ -16,6 +16,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ArduinoClient.ino" />
+    <None Include="src\_micro-api\libraries\ArduinoClientLib\library.properties" />
   </ItemGroup>
- 
+  <ItemGroup>
+    <ClCompile Include="src\_micro-api\libraries\ArduinoClientLib\src\ArduinoClientLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\_micro-api\libraries\ArduinoClientLib\src\ArduinoClientLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.ArduinoClient.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
