@@ -5,8 +5,20 @@
  Editor:	http://www.visualmicro.com
 */
 
+#include <YunServer.h>
+#include <YunClient.h>
+#include <Process.h>
+#include <Mailbox.h>
+#include <HttpClient.h>
+#include <FileIO.h>
+#include <Console.h>
+#include <BridgeUdp.h>
+#include <BridgeSSLClient.h>
+#include <BridgeServer.h>
+#include <BridgeClient.h>
+#include <Bridge.h>
 #include <ArduinoJson.h>
-#include "ArduinoClientLib.h"
+#include "ArduinoAPIClient.h"
 
 // the setup function runs once when you press reset or power the board
 void setup() {
