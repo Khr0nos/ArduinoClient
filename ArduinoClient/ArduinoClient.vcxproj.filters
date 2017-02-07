@@ -22,12 +22,18 @@
     <ClInclude Include="__vm\.ArduinoClient.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\ArduinoClientLib\src\ArduinoAPIClient.h">
+    <ClInclude Include="src\_micro-api\libraries\ArduinoCloudClient\src\ArduinoCloudClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\ArduinoClientLib\src\ArduinoAPIClient.cpp">
+    <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\ArduinoCloudClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
