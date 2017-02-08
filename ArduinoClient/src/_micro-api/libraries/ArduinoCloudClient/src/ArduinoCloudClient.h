@@ -23,18 +23,17 @@ class CloudClient {
 
 public:
     CloudClient();
-    CloudClient(char* url, char* resource, char* content);
+    CloudClient(char* url, char* resource, char* content = "application/json");
     ~CloudClient();
 
     int post(Data& data);
-    int post(Data& data, char* response);
+    int post(Data& data, String* response);
 
     void set_ContentType(const char* Type);
     void set_Header(const char* header);
 
-    void Set_Data(Data& data);
-    void Serialize(char* json, bool indented = false);
-    bool Deserialize(char* json);
+    void Serialize(const Data& data, char* json, bool indented = false);
+    bool Deserialize(Data& data, char* json);
 
 private:
     char* Base_URL;
@@ -42,7 +41,6 @@ private:
     int num_headers;
     const char* headers[10];
     const char* contentType;
-    Data data;
 };
 
 #endif

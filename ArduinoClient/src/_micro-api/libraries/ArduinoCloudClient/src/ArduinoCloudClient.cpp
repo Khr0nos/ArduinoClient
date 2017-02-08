@@ -27,16 +27,15 @@ int CloudClient::post(Data& data) {
     return post(data, NULL);
 }
 
-int CloudClient::post(Data& data, char* response) {
+int CloudClient::post(Data& data, String* response) {
     char json[256];
-    this->data = data;
-    Serialize(json);
+    Serialize(data, json);
 
     Process p;
     p.begin("curl");
     p.addParameter("-k");
     p.addParameter("-H");
-    p.addParameter("Content-Type: " + String(contentType));
+    p.addParameter("Content-Type: " + String(contentType)); //afegir headers addicionals si num_headers > 0
     p.addParameter("-X");
     p.addParameter("POST");
     p.addParameter("-d");
@@ -47,22 +46,21 @@ int CloudClient::post(Data& data, char* response) {
     p.addParameter(String(Base_URL) + String(Resource));
     p.run();
     
-    char* buffer = NULL;
+    String buffer = "";
     while (p.available() > 0) {
-        *buffer = p.read();
-        *buffer++;
+        char c = p.read();
+        buffer.concat(c);
     }
-    response = buffer;
 
     //clean headers
     num_headers = 0;
 
-    /*int i = buffer->lastIndexOf('}');
-    String body = buffer->substring(0, i);
-    body.toCharArray(response, body.length());
+    int i = buffer.lastIndexOf('}');
+    String body = buffer.substring(0, i + 1);
+    *response = body;
 
-    int statusCode = (buffer->substring(i + 1, i + 3)).toInt();*/
-    return 201;
+    int statusCode = (buffer.substring(i + 1)).toInt();
+    return statusCode;
 }
 
 void CloudClient::set_ContentType(const char* Type) {
@@ -74,11 +72,7 @@ void CloudClient::set_Header(const char* header) {
     num_headers++;
 }
 
-void CloudClient::Set_Data(Data& data) {
-    this->data = data;
-}
-
-void CloudClient::Serialize(char* json, bool indented) {
+void CloudClient::Serialize(const Data& data, char* json, bool indented) {
     StaticJsonBuffer<POST_DATA_SIZE> buffer; //buffer estàtic
 
     JsonObject& root = buffer.createObject();
@@ -101,7 +95,7 @@ void CloudClient::Serialize(char* json, bool indented) {
     }
 }
 
-bool CloudClient::Deserialize(char* json) {
+bool CloudClient::Deserialize(Data& data, char* json) {
     StaticJsonBuffer<POST_DATA_SIZE> buffer;
 
     JsonObject& root = buffer.parseObject(json);
