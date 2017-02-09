@@ -29,13 +29,17 @@ int CloudClient::post(Data& data) {
 
 int CloudClient::post(Data& data, String* response) {
     char json[256];
-    Serialize(data, json);
+    Data::Serialize(data, json);
 
     Process p;
     p.begin("curl");
     p.addParameter("-k");
     p.addParameter("-H");
-    p.addParameter("Content-Type: " + String(contentType)); //afegir headers addicionals si num_headers > 0
+    p.addParameter("Content-Type: " + String(contentType));
+    for (int i = 0; i < num_headers; i++) {
+        p.addParameter("-H");
+        p.addParameter(headers[i]);
+    }
     p.addParameter("-X");
     p.addParameter("POST");
     p.addParameter("-d");
@@ -55,6 +59,10 @@ int CloudClient::post(Data& data, String* response) {
     //clean headers
     num_headers = 0;
 
+    return get_response(response, buffer);
+}
+
+int CloudClient::get_response(String* response, String buffer) {
     int i = buffer.lastIndexOf('}');
     String body = buffer.substring(0, i + 1);
     *response = body;
@@ -72,40 +80,3 @@ void CloudClient::set_Header(const char* header) {
     num_headers++;
 }
 
-void CloudClient::Serialize(const Data& data, char* json, bool indented) {
-    StaticJsonBuffer<POST_DATA_SIZE> buffer; //buffer estàtic
-
-    JsonObject& root = buffer.createObject();
-    root["IdhistoricData"] = data.idData;
-    root["Iddevice"] = data.idDevice;
-    root["HistDataDate"] = data.date;
-    root["HistDataValue"] = data.value;
-    root["IddataType"] = data.iddatatype;
-    root["HistDataToDevice"] = data.dataToDevice;
-    root["HistDataAck"] = data.dataAck;
-    root["HistDataAux"] = data.dataAux;
-
-    size_t size;
-    if (indented) {
-        size = root.measurePrettyLength() + 1;
-        root.prettyPrintTo(json, size);
-    } else {
-        size = root.measureLength() + 1;
-        root.printTo(json, size);
-    }
-}
-
-bool CloudClient::Deserialize(Data& data, char* json) {
-    StaticJsonBuffer<POST_DATA_SIZE> buffer;
-
-    JsonObject& root = buffer.parseObject(json);
-    data.idData = root["IdhistoricData"];
-    data.idDevice = root["Iddevice"];
-    data.date = root["HistDataDate"];
-    data.value = root["HistDataValue"];
-    data.iddatatype = root["IddataType"];
-    data.dataToDevice = root["HistDataToDevice"];
-    data.dataAck = root["HistDataAck"];
-    data.dataAux = root["HistDataAux"];
-    return root.success();
-}

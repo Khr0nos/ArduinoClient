@@ -17,8 +17,6 @@
 	#include "WProgram.h"
 #endif
 
-#define POST_DATA_SIZE (JSON_OBJECT_SIZE(8))
-
 class CloudClient {
 
 public:
@@ -29,11 +27,10 @@ public:
     int post(Data& data);
     int post(Data& data, String* response);
 
+    int get_response(String* response, String buffer);
+
     void set_ContentType(const char* Type);
     void set_Header(const char* header);
-
-    void Serialize(const Data& data, char* json, bool indented = false);
-    bool Deserialize(Data& data, char* json);
 
 private:
     char* Base_URL;
