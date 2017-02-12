@@ -47,7 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)src\_micro-api\libraries\ArduinoCloudClient\src;$(ProjectDir)..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Bridge\src;$(ProjectDir)..\..\..\..\Documents\Arduino\libraries\ArduinoJson;$(ProjectDir)..\..\..\..\..\..\Program Files (x86)\Arduino\libraries;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries;$(ProjectDir)..\..\..\..\Documents\Arduino\libraries;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\yun;$(ProjectDir)..\ArduinoClient;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\avr\;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src\_micro-api\libraries\ArduinoCloudClient\src;$(ProjectDir)..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\Bridge\src;$(ProjectDir)..\..\..\..\Documents\Arduino\libraries\ArduinoJson;$(ProjectDir)..\..\..\..\..\..\Program Files (x86)\Arduino\libraries\ArduinoCloudClient\src;$(ProjectDir)..\..\..\..\..\..\Program Files (x86)\Arduino\libraries;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\libraries;$(ProjectDir)..\..\..\..\Documents\Arduino\libraries;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\cores\arduino;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\hardware\avr\1.6.17\variants\yun;$(ProjectDir)..\ArduinoClient;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\avr\include\avr\;$(ProjectDir)..\..\..\..\AppData\Local\arduino15\packages\arduino\tools\avr-gcc\4.9.2-atmel3.5.3-arduino2\lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.ArduinoClient.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__AVR_ATmega32u4__;__AVR_ATmega32U4__;_VMDEBUG=1;F_CPU=16000000L;ARDUINO=10800;ARDUINO_AVR_YUN;ARDUINO_ARCH_AVR;USB_VID=0x2341;USB_PID=0x8041;__cplusplus=201103L;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -82,6 +82,7 @@
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <ClInclude Include="JsonPatch.h" />
     <ClInclude Include="src\_micro-api\libraries\ArduinoCloudClient\src\ArduinoCloudClient.h" />
     <ClInclude Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.h" />
     <ClInclude Include="__vm\.ArduinoClient.vsarduino.h" />
@@ -90,6 +91,7 @@
     <None Include="src\_micro-api\libraries\ArduinoClientLib\library.properties" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="JsonPatch.cpp" />
     <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\ArduinoCloudClient.cpp" />
     <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.cpp" />
   </ItemGroup>

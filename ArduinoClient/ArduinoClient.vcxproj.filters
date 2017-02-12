@@ -28,12 +28,18 @@
     <ClInclude Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JsonPatch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\ArduinoCloudClient.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\_micro-api\libraries\ArduinoCloudClient\src\Data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonPatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

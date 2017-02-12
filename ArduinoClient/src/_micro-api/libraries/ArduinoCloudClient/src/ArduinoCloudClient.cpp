@@ -23,6 +23,14 @@ CloudClient::CloudClient(char* url, char* resource, char* content) {
 
 CloudClient::~CloudClient() {}
 
+int CloudClient::get(int id, String* response) {}
+
+
+int CloudClient::get(String * response)
+{
+    return 0;
+}
+
 int CloudClient::post(Data& data) {
     return post(data, NULL);
 }
@@ -61,6 +69,18 @@ int CloudClient::post(Data& data, String* response) {
 
     return get_response(response, buffer);
 }
+
+int CloudClient::put(Data& data) {}
+
+int CloudClient::put(Data& data, String* response) {}
+
+int CloudClient::patch(int id, JsonPatch& data) {}
+
+int CloudClient::patch(int id, JsonPatch& data, String* response) {}
+
+int CloudClient::del(int id) {}
+
+int CloudClient::del(int id, String* response) {}
 
 int CloudClient::get_response(String* response, String buffer) {
     int i = buffer.lastIndexOf('}');
