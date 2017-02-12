@@ -70,15 +70,21 @@ int CloudClient::post(Data& data, String* response) {
     return get_response(response, buffer);
 }
 
-int CloudClient::put(Data& data) {}
+int CloudClient::put(Data& data) {
+    return put(data, NULL);
+}
 
 int CloudClient::put(Data& data, String* response) {}
 
-int CloudClient::patch(int id, JsonPatch& data) {}
+int CloudClient::patch(int id, JsonPatch& data) {
+    return patch(id, data, NULL);
+}
 
 int CloudClient::patch(int id, JsonPatch& data, String* response) {}
 
-int CloudClient::del(int id) {}
+int CloudClient::del(int id) {
+    return del(id, NULL);
+}
 
 int CloudClient::del(int id, String* response) {}
 
