@@ -12,8 +12,8 @@ public:
     JsonPatch(char * field, JsonVariant value);
     ~JsonPatch();
 
-    void Serialize(const JsonPatch& data, char* json, bool indented = false);
-    bool Deserialize(JsonPatch& data, char* json);
+    static void Serialize(const JsonPatch& data, char* json, bool indented = false);
+    static bool Deserialize(JsonPatch& data, char* json);
 
     void add_Data(char * field, JsonVariant value);
 private:

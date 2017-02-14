@@ -5,11 +5,12 @@
  Editor:	http://www.visualmicro.com
 */
 
-#include <ArduinoCloudClient.h>
+#include <ArduinoJson.h>
+#include "ArduinoCloudClient.h"
 #include <Data.h>
 #include <Bridge.h>
 
-CloudClient client("https://cloudtfg.azurewebsites.net", "/api/historicdata");
+CloudClient client("https://cloudtfg.azurewebsites.net", "/api/historicdata/");
 int interval = 8000;
 
 // the setup function runs once when you press reset or power the board
@@ -34,14 +35,14 @@ void loop() {
     sprintf(data, "%i", randomvalue);
     Data d(6, data, 1);
     String content;
-    int code = client.post(d, &content);
+    StatusCode code = client.post(d, &content);
 
     SerialUSB.println("Body response");
     SerialUSB.println(content);
     SerialUSB.println("status code");
     SerialUSB.println(code);
 
-    if (code == 201) {  // 201 Created TODO extreure en un metode de CloudClient
+    if (code == Created) {
         StaticJsonBuffer<400> buffer;  //ajustar mida?
         JsonObject& response = buffer.parseObject(content);
 

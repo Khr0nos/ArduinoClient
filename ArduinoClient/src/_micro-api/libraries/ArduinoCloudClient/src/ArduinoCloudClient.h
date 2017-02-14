@@ -18,6 +18,19 @@
 	#include "WProgram.h"
 #endif
 
+class JsonPatch;
+
+enum StatusCode {
+    Ok = 200,
+    Created = 201,
+    No_Content = 204,
+    Bad_Request = 400,
+    Unauthorized = 401,
+    Forbidden = 403,
+    Not_Found = 404,
+    Conflict = 409
+};
+
 class CloudClient {
 
 public:
@@ -25,16 +38,16 @@ public:
     CloudClient(char* url, char* resource, char* content = "application/json");
     ~CloudClient();
 
-    int get(int id, String* response);
-    int get(String* response);
-    int post(Data& data);
-    int post(Data& data, String* response);
-    int put(Data& data);
-    int put(Data& data, String* response);
-    int patch(int id, JsonPatch& data);
-    int patch(int id, JsonPatch& data, String* response);
-    int del(int id);
-    int del(int id, String* response);
+    StatusCode get(int id, String* response);
+    StatusCode get(String* response);
+    StatusCode post(Data& data);
+    StatusCode post(Data& data, String* response);
+    StatusCode put(Data& data);
+    StatusCode put(Data& data, String* response);
+    StatusCode patch(int id, JsonPatch& data);
+    StatusCode patch(int id, JsonPatch& data, String* response);
+    StatusCode del(int id);
+    StatusCode del(int id, String* response);
 
     void set_ContentType(const char* Type);
     void set_Header(const char* header);
@@ -46,7 +59,6 @@ private:
     const char* headers[10];
     const char* contentType;
 
-    static int get_response(String* response, String buffer);
+    static StatusCode get_response(String* response, String buffer);
 };
-
 #endif

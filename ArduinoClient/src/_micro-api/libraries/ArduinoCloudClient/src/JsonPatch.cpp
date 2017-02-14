@@ -40,6 +40,7 @@ bool JsonPatch::Deserialize(JsonPatch& data, char* json) {
     StaticJsonBuffer<500> buffer;
 
     data.patchData = buffer.parseArray(json);
+    return data.patchData.success();
 }
 
 void JsonPatch::add_Data(char* field, JsonVariant value) {

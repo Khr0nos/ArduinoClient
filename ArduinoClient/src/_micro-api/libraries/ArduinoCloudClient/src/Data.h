@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _Data_h
 #define _Data_h
 
