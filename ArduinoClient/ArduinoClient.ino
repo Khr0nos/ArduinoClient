@@ -7,7 +7,7 @@
 
 #include <ArduinoJson.h>
 #include "ArduinoCloudClient.h"
-#include <Data.h>
+#include "Data.h"
 #include <Bridge.h>
 
 CloudClient client("https://cloudtfg.azurewebsites.net", "/api/historicdata/");
