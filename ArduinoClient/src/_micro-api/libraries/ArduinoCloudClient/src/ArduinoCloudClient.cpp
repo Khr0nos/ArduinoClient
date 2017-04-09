@@ -124,11 +124,11 @@ StatusCode CloudClient::post(Data& data, String* response) {
     return get_response(response, buffer);
 }
 
-StatusCode CloudClient::put(Data& data) {
-    return put(data, NULL);
+StatusCode CloudClient::put(int id, Data& data) {
+    return put(id, data, NULL);
 }
 
-StatusCode CloudClient::put(Data& data, String* response) {
+StatusCode CloudClient::put(int id, Data& data, String* response) {
     char json[256];
     Data::Serialize(data, json);
 
@@ -148,7 +148,7 @@ StatusCode CloudClient::put(Data& data, String* response) {
     p.addParameter("-s");
     p.addParameter("-w");
     p.addParameter("%{http_code}");
-    p.addParameter(String(Base_URL) + String(Resource));
+    p.addParameter(String(Base_URL) + String(Resource) + String(id));
     p.run();
 
     String buffer = "";
